@@ -12,7 +12,7 @@ Quick file creation with folder navigation and templates.
 - Press `Ctrl + Shift + P` and type `Easy File: Open template folder` to open the folder with templates.
 - Create a new template with `template` name and the correct extension (e.g. `template.vue` for Vue template).
 
-![Create template](https://drive.google.com/drive-viewer/AKGpihaHRRi7hKm0goD6n4qHZjbHYYIr6MKUwhNoTReJgKcOAhiGSnVJEbT6g0woDsykTir6Qk2RtqPthN8Yds04W1_rXfKdjJlU3JE=w1920-h919?auditContext=forDisplay)
+![Create Template](https://imgur.com/x6oWt2Z)
 
 ## Create File
 
