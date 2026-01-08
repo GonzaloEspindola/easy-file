@@ -73,14 +73,19 @@ async function pickFolderFinal(uri: vscode.Uri): Promise<vscode.Uri | undefined>
       .map(([name]) => name);
 
     const items: vscode.QuickPickItem[] = [
-      { label: '✅ Usar esta carpeta', description: uri.fsPath },
-      { label: '📁 Crear nueva carpeta', description: '' },
-      { label: '──────────────────────────────────────────────────────────────────────────────────────────────────', description: '' },
-      ...folders.map(f => ({ label: `$(folder) ${f}`, description: '' }))
-    ];
+  { label: '✅ Use this folder', description: uri.fsPath },
+  { label: '📁 New folder', description: '' },
+  { label: '──────────────────────────────────────────────────────────────────────────────────────────────────', description: '' },
+  // Subir de nivel solo si no estamos en la raíz
+  ...(vscode.workspace.workspaceFolders && uri.fsPath !== vscode.workspace.workspaceFolders[0].uri.fsPath
+      ? [{ label: '..', description: 'Go up one level' }]
+      : []),
+  ...folders.map(f => ({ label: `$(folder) ${f}`, description: '' }))
+];
+
 
     const choice = await vscode.window.showQuickPick(items, {
-      placeHolder: 'Navega o selecciona carpeta',
+      placeHolder: 'Browse or select folder',
       ignoreFocusOut: true,
       canPickMany: false,
     });
@@ -88,13 +93,13 @@ async function pickFolderFinal(uri: vscode.Uri): Promise<vscode.Uri | undefined>
     if (!choice) {return undefined;} // ESC → salir
 
     // Opciones fijas
-    if (choice.label === '✅ Usar esta carpeta') {
+    if (choice.label === '✅ Use this folder') {
       return uri;
     }
 
-    if (choice.label === '📁 Crear nueva carpeta') {
+    if (choice.label === '📁 New folder') {
       const newFolderName = await vscode.window.showInputBox({
-        prompt: 'Nombre de la carpeta nueva',
+        prompt: 'New folder name',
         ignoreFocusOut: true,
       });
       if (!newFolderName) {continue;}
@@ -119,8 +124,8 @@ async function pickFolderFinal(uri: vscode.Uri): Promise<vscode.Uri | undefined>
 // Pedir nombre del archivo con ESC para volver a selección de carpeta
 async function askFileName(folderUri: vscode.Uri): Promise<string | 'back' | undefined> {
   const fileName = await vscode.window.showInputBox({
-    prompt: 'Nombre del archivo con extensión (ESC para cancelar)',
-    placeHolder: 'Componente.vue',
+    prompt: 'File name with extension (ESC to cancel)',
+    placeHolder: 'Component.vue',
     ignoreFocusOut: true,
   });
 

@@ -1,7 +1,8 @@
 {
   "name": "easy-file",
-  "displayName": "easy-file",
+  "displayName": "Easy File",
   "description": "Quick file creation with folder navigation and templates",
+  "icon": "icon.png",
   "version": "1.0.0",
   "repository": {
     "type": "git",
@@ -20,11 +21,11 @@
   "commands": [
       {
         "command": "easy-file.createFile",
-        "title": "Easy File: Crear archivo"
+        "title": "Easy File: Create file"
       },
       {
         "command": "easy-file.openTemplates",
-        "title": "Easy File: Abrir carpeta de templates"
+        "title": "Easy File: Open template folder"
       }
     ],
     "keybindings": [
