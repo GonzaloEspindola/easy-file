@@ -3,7 +3,7 @@
   "displayName": "Easy File",
   "description": "Quick file creation with folder navigation and templates",
   "icon": "icon.png",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/GonzaloEspindola/easy-file"
