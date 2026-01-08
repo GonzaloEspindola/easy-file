@@ -5,7 +5,7 @@
   "version": "1.0.0",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/GonzaloEspindola/easy-file"
   },
   "engines": {
     "vscode": "^1.107.0"
